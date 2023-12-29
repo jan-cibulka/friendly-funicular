@@ -6,14 +6,14 @@ import jsPDF from "jspdf";
 const generateSheetContent = (width: number, height: number) => {
   const sheetContent = (
     <div>
-      <h2>Exam Sheet Preview</h2>
+      <h2 class="underline">Exam Sheet Preview</h2>
     </div>
   );
 
   return sheetContent;
 };
 
-const Math1: Component = () => {
+const Math: Component = () => {
   var doc = new jsPDF("p", "mm", "a4");
 
   var width = doc.internal.pageSize.getWidth();
@@ -21,7 +21,7 @@ const Math1: Component = () => {
 
   const examSheetContent = generateSheetContent(width, height);
 
-  console.log(width, height);
+  console.log(width, height, examSheetContent);
 
   const exportCallback = () => {
     if (examSheetContent) {
@@ -34,11 +34,11 @@ const Math1: Component = () => {
   };
 
   return (
-    <div>
+    <div class="p-10 flex flex-col gap-4 ">
       <Preview>{examSheetContent}</Preview>
       <Export callback={exportCallback} />
     </div>
   );
 };
 
-export default Math1;
+export default Math;
