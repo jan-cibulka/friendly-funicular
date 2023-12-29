@@ -5,7 +5,7 @@ const Item: Component<{ id: number; itemHeight: number }> = ({
   itemHeight,
 }) => (
   <div
-    class="w-full border-2 border-red-500"
+    class="w-full border border-red-500"
     style={{
       height: `${itemHeight}px`,
     }}
