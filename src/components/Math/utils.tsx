@@ -28,7 +28,7 @@ export const getPreviewContent = (
         width: `${width}px`,
         height: `${height}px`,
       }}
-      class="p-5 border-2 border-red-500 flex"
+      class="p-5 flex"
     >
       <div class="flex-col w-full ">
         {[...Array(ITEM_COUNT_PER_COL)].map((_, index) => {
@@ -76,7 +76,7 @@ export const getSolutionContent = (
         width: `${width}px`,
         height: `${height}px`,
       }}
-      class="p-5 border-2 border-red-500 flex"
+      class="p-5 flex"
     >
       <div class="flex-col w-full ">
         {[...Array(ITEM_COUNT_PER_COL)].map((_, index) => {

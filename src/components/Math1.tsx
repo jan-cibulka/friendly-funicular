@@ -56,7 +56,7 @@ const Math1: Component = () => {
     if (previewSheetContent) {
       doc.html(previewSheetContent as HTMLElement, {
         async callback(doc) {
-          await doc.save("pdf_name");
+          await doc.save("questions");
         },
       });
     }
@@ -65,7 +65,7 @@ const Math1: Component = () => {
     if (previewSheetContent) {
       doc.html(solutionsSheetContent as HTMLElement, {
         async callback(doc) {
-          await doc.save("pdf_name");
+          await doc.save("solutions");
         },
       });
     }

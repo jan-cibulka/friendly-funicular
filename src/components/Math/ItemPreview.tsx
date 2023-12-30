@@ -8,7 +8,7 @@ const ItemPreview: Component<{
 }> = ({ id, itemHeight, numberA, numberB }) => {
   return (
     <div
-      class="w-full border border-red-500"
+      class="w-full border border-black-300"
       style={{
         height: `${itemHeight}px`,
       }}
