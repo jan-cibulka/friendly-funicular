@@ -13,7 +13,7 @@ const ItemPreview: Component<{
         height: `${itemHeight}px`,
       }}
     >
-      {numberA} + {numberB}
+      {numberA} + {numberB} =
     </div>
   );
 };
