@@ -1,5 +1,4 @@
-import { Component, JSX } from "solid-js";
-import jsPDF from "jspdf";
+import { Component } from "solid-js";
 
 const Export: Component<{ callback: () => void }> = ({ callback }) => {
   return (

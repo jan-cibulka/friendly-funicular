@@ -6,14 +6,17 @@ import Layout from "./components/Layout";
 import Math1 from "./components/Math1";
 
 import "./index.css";
+import { IdProvider } from "./components/IdContext";
 
 const App = () => (
   <>
-    <Layout>
-      <Router>
-        <Route path="/" component={Math1} />
-      </Router>
-    </Layout>
+    <IdProvider>
+      <Layout>
+        <Router>
+          <Route path="/" component={Math1} />
+        </Router>
+      </Layout>
+    </IdProvider>
   </>
 );
 

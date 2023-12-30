@@ -1,4 +1,4 @@
-import { Component, JSX } from "solid-js";
+import { Component, JSX, createEffect, useContext } from "solid-js";
 import Preview from "./Math/Preview";
 import Export from "./Math/Export";
 import jsPDF from "jspdf";
@@ -6,7 +6,6 @@ import jsPDF from "jspdf";
 import {
   GENERATED_NUMBERS,
   ITEM_COUNT_PER_COL,
-  MAGIC_ID,
   MAX,
   MIN,
 } from "./Math/constants";
@@ -16,10 +15,16 @@ import {
   getSolutionContent,
 } from "./Math/utils";
 import Solutions from "./Math/Solutions";
+import { IdContext } from "./IdContext";
 
-export const generateSheetContent = (width: number, height: number) => {
+export const generateSheetContent = (
+  width: number,
+  height: number,
+  id: number
+) => {
+  console.log("generateSheetContent", id);
   const itemHeight = Math.floor((height - 40) / ITEM_COUNT_PER_COL);
-  const numbers = generateNumbers(MAGIC_ID, GENERATED_NUMBERS, MIN, MAX);
+  const numbers = generateNumbers(id, GENERATED_NUMBERS, MIN, MAX);
 
   const previewSheetContent = getPreviewContent(
     width,
@@ -42,6 +47,8 @@ export const generateSheetContent = (width: number, height: number) => {
 };
 
 const Math1: Component = () => {
+  const { value } = useContext(IdContext);
+
   var doc = new jsPDF("p", "pt", "a4");
 
   var width = doc.internal.pageSize.getWidth();
@@ -49,11 +56,12 @@ const Math1: Component = () => {
 
   const { previewSheetContent, solutionsSheetContent } = generateSheetContent(
     width,
-    height
+    height,
+    value()
   );
 
   const exportPreviewCallback = () => {
-    if (previewSheetContent) {
+    if (Boolean(previewSheetContent)) {
       doc.html(previewSheetContent as HTMLElement, {
         async callback(doc) {
           await doc.save("questions");
@@ -62,7 +70,7 @@ const Math1: Component = () => {
     }
   };
   const exportSolutionsCallback = () => {
-    if (previewSheetContent) {
+    if (solutionsSheetContent) {
       doc.html(solutionsSheetContent as HTMLElement, {
         async callback(doc) {
           await doc.save("solutions");
